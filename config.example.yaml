@@ -1,0 +1,149 @@
+# Example configuration for DOT Magic MCP Server
+# Copy this file to config.yaml and customize it
+
+networks:
+  paseo_assethub:
+    name: "Paseo AssetHub"
+    rpc_servers:
+      - "wss://paseo-asset-hub-rpc.polkadot.io"
+    native_token:
+      symbol: "PAS"
+      decimals: 10
+    supported_currencies:
+      - ticker: "PAS"
+        decimals: 10
+        location: "native"
+      - ticker: "USDT"
+        decimals: 6
+        location:
+          parents: 0
+          interior:
+            X2:
+              - PalletInstance: 50
+              - GeneralIndex: 1984
+
+  westend_assethub:
+    name: "Westend AssetHub"
+    rpc_servers:
+      - "wss://westend-asset-hub-rpc.polkadot.io"
+    native_token:
+      symbol: "WND"
+      decimals: 12
+    supported_currencies:
+      - ticker: "WND"
+        decimals: 12
+        location: "native"
+      - ticker: "USDT"
+        decimals: 6
+        location:
+          parents: 0
+          interior:
+            X2:
+              - PalletInstance: 50
+              - GeneralIndex: 1984
+
+  kusama_assethub:
+    name: "Kusama AssetHub"
+    rpc_servers:
+      - "wss://kusama-asset-hub-rpc.polkadot.io"
+      - "wss://statemine-rpc.dwellir.com"
+    native_token:
+      symbol: "KSM"
+      decimals: 12
+    supported_currencies:
+      - ticker: "KSM"
+        decimals: 12
+        location: "native"
+      - ticker: "USDT"
+        decimals: 6
+        location:
+          parents: 0
+          interior:
+            X2:
+              - PalletInstance: 50
+              - GeneralIndex: 1984
+
+  polkadot_assethub:
+    name: "Polkadot AssetHub"
+    rpc_servers:
+      - "wss://polkadot-asset-hub-rpc.polkadot.io"
+      - "wss://statemint-rpc.dwellir.com"
+    native_token:
+      symbol: "DOT"
+      decimals: 10
+    supported_currencies:
+      - ticker: "DOT"
+        decimals: 10
+        location: "native"
+      - ticker: "USDT"
+        decimals: 6
+        location:
+          parents: 0
+          interior:
+            X2:
+              - PalletInstance: 50
+              - GeneralIndex: 1984
+      - ticker: "USDC"
+        decimals: 6
+        location:
+          parents: 0
+          interior:
+            X2:
+              - PalletInstance: 50
+              - GeneralIndex: 1337
+
+  hydration:
+    name: "Hydration"
+    rpc_servers:
+      - "wss://rpc.hydradx.cloud"
+      - "wss://hydration-rpc.dwellir.com"
+    native_token:
+      symbol: "HDX"
+      decimals: 12
+    supported_currencies:
+      - ticker: "HDX"
+        decimals: 12
+        location: "native"
+      - ticker: "DOT"
+        decimals: 10
+        location:
+          parents: 1
+          interior:
+            Here: null
+      - ticker: "USDT"
+        decimals: 6
+        location:
+          parents: 1
+          interior:
+            X3:
+              - Parachain: 1000
+              - PalletInstance: 50
+              - GeneralIndex: 1984
+
+# Default network for each token when network is not specified
+default_token_networks:
+  PAS: "paseo_assethub"
+  WND: "westend_assethub"
+  KSM: "kusama_assethub"
+  DOT: "polkadot_assethub"
+  USDT: "polkadot_assethub"
+  USDC: "polkadot_assethub"
+  HDX: "hydration"
+
+# Wallet configuration (OPTIONAL - prefer environment variables)
+#
+# RECOMMENDED: Use environment variables instead of config file
+# Set WALLET_PRIVATE_KEY or WALLET_MNEMONIC in .env file (see .env.example)
+#
+# If using config file, the wallet section is optional.
+# Environment variables take priority over config file settings.
+wallet:
+  # Type can be: mnemonic or private_key
+  type: "mnemonic"
+
+  # Optional: Derivation path for mnemonic (defaults to //0)
+  # derivation_path: "//0"
+
+  # NOTE: Do not put actual secrets here! Use environment variables instead.
+  # mnemonic: "your twelve word mnemonic here"
+  # private_key: "0x1234567890abcdef..."

@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:papi.how)",
+      "WebFetch(domain:docs.hydration.net)",
+      "WebSearch",
+      "Bash(npm init:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm test)",
+      "Bash(npm run test:coverage:*)",
+      "Bash(npm test:*)",
+      "Bash(npm search:*)",
+      "Bash(npx papi add polkadot_asset_hub)",
+      "Bash(npx papi:*)",
+      "Bash(timeout 5 npm start:*)",
+      "Bash(cat:*)",
+      "Bash(node get-address.js:*)",
+      "Bash(npx tsc:*)",
+      "Bash(node -e:*)",
+      "Bash(node test-send-pas.js:*)",
+      "Bash(timeout 180 node:*)",
+      "Bash(timeout 60 node:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

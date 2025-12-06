@@ -1,0 +1,50 @@
+{
+  "name": "dot-magic",
+  "version": "1.0.0",
+  "description": "MCP server for sending and swapping crypto via PAPI SDK",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "dot-magic": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "keywords": [
+    "mcp",
+    "polkadot",
+    "crypto",
+    "papi"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.24.3",
+    "@polkadot-api/descriptors": "file:.papi/descriptors",
+    "@polkadot-api/json-rpc-provider": "^0.0.4",
+    "@polkadot-api/json-rpc-provider-proxy": "^0.2.7",
+    "@polkadot-api/sm-provider": "^0.1.14",
+    "@polkadot-api/smoldot": "^0.3.14",
+    "@polkadot-api/ws-provider": "^0.7.4",
+    "@polkadot/keyring": "^13.5.9",
+    "@polkadot/util": "^13.5.9",
+    "@polkadot/util-crypto": "^13.5.9",
+    "polkadot-api": "^1.22.0",
+    "smoldot": "^2.0.40",
+    "yaml": "^2.8.2",
+    "zod": "^4.1.13"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.2.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^22.19.1",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "typescript": "^5.9.3"
+  }
+}
