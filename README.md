@@ -1,18 +1,18 @@
+WARNING: THIS IS NOT PRODUCTION READY CODE - USE AT YOUR OWN RISK
+
 # DOT Magic
 
-A Model Context Protocol (MCP) server that enables AI assistants like Claude to interact with Polkadot and Kusama ecosystems. Send tokens, swap assets on Hydration DEX, and manage crypto operations through natural language.
+A Model Context Protocol (MCP) server that enables AI assistants like Claude to interact with Polkadot and Kusama ecosystems. Send tokens in natural language.
 
 ## About
 
-DOT Magic is an MCP server that provides secure, type-safe access to Polkadot/Kusama blockchain operations. It uses the Polkadot API (PAPI) SDK to enable:
+DOT Magic is an MCP server that provides secure, type-safe access to Polkadot/Kusama blockchain operations. 
 
-- **Token Transfers**: Send native and asset tokens across Polkadot, Kusama, Westend, Paseo, and their AssetHub parachains
-- **DEX Swaps**: Perform token swaps on Hydration (formerly HydraDX) with automatic slippage protection
-- **Wallet Management**: Auto-generated secure wallets with mnemonic backup
-- **Type Safety**: Full type safety using generated descriptors from @polkadot-api
+The server keeps its own hot wallet.
 
-Supported networks:
-- Polkadot PassetHub (PAS)
+It uses the Polkadot API (PAPI) SDK to enable:
+
+- **Token Transfers**: Send native and asset tokens across Paseo PassetHub
 
 ## Setup
 
@@ -90,21 +90,18 @@ Once integrated, you can interact with the blockchain through natural language:
 
 **Example prompts:**
 
-- "Send 10 DOT to `<address>`"
 - "What's my wallet address?"
-- "Swap 5 USDT for HDX on Hydration"
-- "Send 0.5 KSM to `<address>` on Kusama AssetHub"
+- "Send 10 PAS to `<address>`"
 
 **Available Tools:**
 
-1. **send_tokens**: Send tokens to any address
+1. **get_wallet_address**: Get your wallet's SS58 address
+   - No parameters required
+
+
+2. **send_tokens**: Send tokens to any address
    - Parameters: `to` (address), `ticker` (token symbol), `amount` (decimal), `network` (optional)
 
-2. **swap_tokens**: Swap tokens on Hydration DEX
-   - Parameters: `token_in`, `token_out`, `amount_in` OR `amount_out`, `slippage` (optional, default 0.5%)
-
-3. **get_wallet_address**: Get your wallet's SS58 address
-   - No parameters required
 
 ## Testing
 
@@ -130,10 +127,7 @@ node test-send-pas.js
 
 ## Security
 
-- The wallet mnemonic is stored in `.wallet/mnemonic.txt` - keep this secure and backed up
-- Never commit your wallet files to version control
 - The `.gitignore` is configured to exclude wallet files
-- Consider using environment variables for sensitive configuration
 
 ## Development
 
@@ -161,27 +155,6 @@ dot-magic/
 └── package.json
 ```
 
-## Troubleshooting
-
-**Connection issues:**
-- Verify RPC endpoints in `config.yaml` are accessible
-- Try alternative RPC endpoints from the config
-- Check your internet connection
-
-**Transaction failures:**
-- Ensure wallet has sufficient balance for transaction + fees
-- Verify the recipient address is valid for the target network
-- Check slippage settings for swaps
-
-**Wallet not found:**
-- The wallet is auto-generated on first use
-- Check `.wallet/mnemonic.txt` exists
-- Ensure the directory has write permissions
-
-## License
-
-ISC
-
 ## Contributing
 
-Contributions welcome! Please open an issue or submit a pull request.
+Contributions welcome! Please open an issue.
